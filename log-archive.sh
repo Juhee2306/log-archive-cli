@@ -41,3 +41,12 @@ tar -czf"$ARCHIVE_NAME" -C "$(dirname "$LOG_DIR")" "$(basename "$LOG_DIR")"
 mv "$ARCHIVE_NAME" "$ARCHIVE-DIR/"
 echo -e "${GREEN}Logs compressed successfully into: $AECHIVE_DIR/$ARCHIVE_NAME${RESET}"
 
+HISTORY_LOG="./archive_history.txt"
+{
+  echo "---------------------------------------------"
+  echo "Date:        $(date)"
+  echo "Directory:   $LOG_DIR"
+  echo "Archive:     $ARCHIVE_DIR/$ARCHIVE_NAME"
+} >> "$HISTORY_LOG"
+
+echo -e "${YELLOW}Archive history logged to $HISTORY_LOG${RESET}"
