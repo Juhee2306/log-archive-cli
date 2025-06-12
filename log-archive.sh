@@ -33,3 +33,11 @@ fi
 
 echo -e "${GREEN}Log directory received: $LOG_DIR${RESET}"
 
+ARCHIVE_DIR="./archives"
+mkdir -p "$ARCHIVE_DIR"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+ARCHIVE_NAME="logs_archive_${TIMESTAMP}.tar.gz"
+tar -czf"$ARCHIVE_NAME" -C "$(dirname "$LOG_DIR")" "$(basename "$LOG_DIR")"
+mv "$ARCHIVE_NAME" "$ARCHIVE-DIR/"
+echo -e "${GREEN}Logs compressed successfully into: $AECHIVE_DIR/$ARCHIVE_NAME${RESET}"
+
