@@ -6,9 +6,25 @@ YELLOW="\e[33m"
 RESET="\e[0m"
 
 usage() {
-  echo -e "${YELLOW}Usage: $0 -d <log-directory>${RESET}"
-  exit 1
+  echo -e "${YELLOW}
+Usage: $0 -d <log-directory> [-h|--help]
+
+Options:
+  -d <directory>   Specify the log directory to archive.
+  -h, --help       Show this help message and exit.
+
+Example:
+  $0 -d /var/log
+${RESET}"
+  exit 0
 }
+
+for arg in "$@"; do
+  if [[ "$arg" == "--help" || "$arg" == "--h" ]]; then
+    usage
+  fi
+done
+
 
 while getopts ":d:" opt; do
   case ${opt} in
